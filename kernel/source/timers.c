@@ -43,6 +43,7 @@ void sys_tick_handler(void)
 
 void start_timers_clock(u32_t prescaler)
 {
+    STK->VAL = prescaler;
     STK->LOAD = prescaler;
     STK->CTRL = STK_CTRL_ENABLE | STK_CTRL_CLKSOURCE | STK_CTRL_TICKINT;
 }

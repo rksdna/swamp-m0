@@ -26,8 +26,10 @@
 
 #include <types.h>
 
+#define WASTE(a) (void)(a)
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
+
 
 typedef void (*put_t)(void *data, char value);
 
