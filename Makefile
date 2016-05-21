@@ -82,7 +82,7 @@ $(ELF): $(OBJ)
 
 install: $(HEX)
 	@echo "Installing $(HEX)..."
-	$(BS) -c $(PORT) -e -w $(HEX) -s -d
+	$(BS) -c $(PORT) -e -w $(HEX) -t -d
 
 clean:
 	@echo "Cleaning..."
