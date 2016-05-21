@@ -48,7 +48,7 @@ LD = $(PREFIX)ld
 OC = $(PREFIX)objcopy
 OD = $(PREFIX)objdump
 SZ = $(PREFIX)size
-BS = stm32-bsl
+BS = swamp-boot
 RM = rm -f
 
 CFLAGS = -nostdinc -mcpu=cortex-m0 -mthumb -Wall -Wno-main -Os -g -MD $(INC) 
@@ -82,7 +82,7 @@ $(ELF): $(OBJ)
 
 install: $(HEX)
 	@echo "Installing $(HEX)..."
-	$(BS) -m b r -c $(PORT) -e -w $(HEX) -s -d
+	$(BS) -c $(PORT) -e -w $(HEX) -s -d
 
 clean:
 	@echo "Cleaning..."
