@@ -48,6 +48,9 @@ struct adc_common
     volatile u32_t CCR;
 };
 
+#define ADC1 ((struct adc *)0x40012400)
+#define ADC_COMMON ((struct adc_common *)0x40012708)
+
 #define ADC_ISR_ADRDY ((u32_t)0x00000001)
 #define ADC_ISR_EOSMP ((u32_t)0x00000002)
 #define ADC_ISR_EOC ((u32_t)0x00000004)

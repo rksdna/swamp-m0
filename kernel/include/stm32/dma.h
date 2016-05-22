@@ -40,6 +40,22 @@ struct dma
     volatile u32_t IFCR;
 };
 
+#define DMA1 ((struct dma *)0x40020000)
+#define DMA1_CH1 ((struct dma_channel dma *)0x40020008)
+#define DMA1_CH2 ((struct dma_channel dma *)0x4002001C)
+#define DMA1_CH3 ((struct dma_channel dma *)0x40020030)
+#define DMA1_CH4 ((struct dma_channel dma *)0x40020044)
+#define DMA1_CH5 ((struct dma_channel dma *)0x40020058)
+#define DMA1_CH6 ((struct dma_channel dma *)0x4002006C)
+#define DMA1_CH7 ((struct dma_channel dma *)0x40020080)
+
+#define DMA2 ((struct dma *)0x40020400)
+#define DMA2_CH1 ((struct dma_channel dma *)0x40020408)
+#define DMA2_CH2 ((struct dma_channel dma *)0x4002041C)
+#define DMA2_CH3 ((struct dma_channel dma *)0x40020430)
+#define DMA2_CH4 ((struct dma_channel dma *)0x40020444)
+#define DMA2_CH5 ((struct dma_channel dma *)0x40020458)
+
 #define DMA_ISR_GIF1 ((u32_t)0x00000001)
 #define DMA_ISR_TCIF1 ((u32_t)0x00000002)
 #define DMA_ISR_HTIF1 ((u32_t)0x00000004)

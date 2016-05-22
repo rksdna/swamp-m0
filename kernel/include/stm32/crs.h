@@ -34,6 +34,8 @@ struct crs
     volatile u32_t ICR;
 };
 
+#define CRS ((struct crs *)0x40006C00)
+
 #define CRS_CR_SYNCOKIE ((u32_t)0x00000001)
 #define CRS_CR_SYNCWARNIE ((u32_t)0x00000002)
 #define CRS_CR_ERRIE ((u32_t)0x00000004)

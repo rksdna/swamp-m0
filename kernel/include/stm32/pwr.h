@@ -32,6 +32,8 @@ struct pwr
     volatile u32_t CSR;
 };
 
+#define PWR ((struct pwr *)0x40007000)
+
 #define PWR_CR_LPDS ((u32_t)0x00000001)
 #define PWR_CR_PDDS ((u32_t)0x00000002)
 #define PWR_CR_CWUF ((u32_t)0x00000004)

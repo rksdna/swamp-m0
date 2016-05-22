@@ -36,6 +36,8 @@ struct exti
     volatile u32_t PR;
 };
 
+#define EXTI ((struct exti *)0x40010400)
+
 #define EXTI_IMR_MR0 ((u32_t)0x00000001)
 #define EXTI_IMR_MR1 ((u32_t)0x00000002)
 #define EXTI_IMR_MR2 ((u32_t)0x00000004)

@@ -44,6 +44,8 @@ struct dac
     volatile u32_t SR;
 };
 
+#define DAC ((struct dac *)0x40007400)
+
 #define DAC_CR_EN1 ((u32_t)0x00000001)
 #define DAC_CR_BOFF1 ((u32_t)0x00000002)
 #define DAC_CR_TEN1 ((u32_t)0x00000004)

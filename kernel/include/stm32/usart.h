@@ -45,6 +45,12 @@ struct usart
 
 #define USART1 ((struct usart *)0x40013800)
 #define USART2 ((struct usart *)0x40004400)
+#define USART3 ((struct usart *)0x40004800)
+#define USART4 ((struct usart *)0x40004C00)
+#define USART5 ((struct usart *)0x40005000)
+#define USART6 ((struct usart *)0x40011400)
+#define USART7 ((struct usart *)0x40011800)
+#define USART8 ((struct usart *)0x40011C00)
 
 #define USART_CR1_UE ((u32_t)0x00000001)
 #define USART_CR1_UESM ((u32_t)0x00000002)

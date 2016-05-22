@@ -43,6 +43,8 @@ struct gpio
 #define GPIOA ((struct gpio *)0x48000000)
 #define GPIOB ((struct gpio *)0x48000400)
 #define GPIOC ((struct gpio *)0x48000800)
+#define GPIOD ((struct gpio *)0x48000C00)
+#define GPIOE ((struct gpio *)0x48001000)
 #define GPIOF ((struct gpio *)0x48001400)
 
 #define GPIO_MODER_MODER0 ((u32_t)0x00000003)
