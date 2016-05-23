@@ -21,9 +21,35 @@
  * THE SOFTWARE.
  */
 
-#ifndef IRTIM_H
-#define IRTIM_H
+#ifndef IWDG_H
+#define IWDG_H
 
 #include <types.h>
+
+struct iwdg
+{
+    volatile u32_t KR;
+    volatile u32_t PR;
+    volatile u32_t RLR;
+    volatile u32_t SR;
+    volatile u32_t WINR;
+};
+
+#define IWDG ((struct iwdg *)0x40003000)
+
+#define IWDG_KR_KEY ((u32_t)0xFFFF)
+
+#define IWDG_PR_PR ((u32_t)0x07)
+#define IWDG_PR_PR_0 ((u32_t)0x01)
+#define IWDG_PR_PR_1 ((u32_t)0x02)
+#define IWDG_PR_PR_2 ((u32_t)0x04)
+
+#define IWDG_RLR_RL ((u32_t)0x0FFF)
+
+#define IWDG_SR_PVU ((u32_t)0x01)
+#define IWDG_SR_RVU ((u32_t)0x02)
+#define IWDG_SR_WVU ((u32_t)0x04)
+
+#define IWDG_WINR_WIN ((u32_t)0x0FFF)
 
 #endif
