@@ -41,35 +41,15 @@ struct adc
     volatile u32_t CHSELR;
     u32_t RESERVED4[5];
     volatile u32_t DR;
-};
-
-struct adc_common
-{
+    u32_t RESERVED5[177];
     volatile u32_t CCR;
 };
 
 #define ADC1 ((struct adc *)0x40012400)
-#define ADC_COMMON ((struct adc_common *)0x40012708)
 
-#define ADC_ISR_ADRDY ((u32_t)0x00000001)
-#define ADC_ISR_EOSMP ((u32_t)0x00000002)
-#define ADC_ISR_EOC ((u32_t)0x00000004)
-#define ADC_ISR_EOS ((u32_t)0x00000008)
-#define ADC_ISR_OVR ((u32_t)0x00000010)
-#define ADC_ISR_AWD1 ((u32_t)0x00000080)
-
-#define ADC_IER_ADRDYIE ((u32_t)0x00000001)
-#define ADC_IER_EOSMPIE ((u32_t)0x00000002)
-#define ADC_IER_EOCIE ((u32_t)0x00000004)
-#define ADC_IER_EOSIE ((u32_t)0x00000008)
-#define ADC_IER_OVRIE ((u32_t)0x00000010)
-#define ADC_IER_AWD1IE ((u32_t)0x00000080)
-
-#define ADC_CR_ADEN ((u32_t)0x00000001)
-#define ADC_CR_ADDIS ((u32_t)0x00000002)
-#define ADC_CR_ADSTART ((u32_t)0x00000004)
-#define ADC_CR_ADSTP ((u32_t)0x00000010)
-#define ADC_CR_ADCAL ((u32_t)0x80000000)
+#define ADC_CCR_VREFEN ((u32_t)0x00400000)
+#define ADC_CCR_TSEN ((u32_t)0x00800000)
+#define ADC_CCR_VBATEN ((u32_t)0x01000000)
 
 #define ADC_CFGR1_DMAEN ((u32_t)0x00000001)
 #define ADC_CFGR1_DMACFG ((u32_t)0x00000002)
@@ -103,39 +83,6 @@ struct adc_common
 #define ADC_CFGR2_CKMODE_1 ((u32_t)0x80000000)
 #define ADC_CFGR2_CKMODE_0 ((u32_t)0x40000000)
 
-#define ADC_SMPR_SMP ((u32_t)0x00000007)
-#define ADC_SMPR_SMP_0 ((u32_t)0x00000001)
-#define ADC_SMPR_SMP_1 ((u32_t)0x00000002)
-#define ADC_SMPR_SMP_2 ((u32_t)0x00000004)
-
-#define ADC_TR1_LT1 ((u32_t)0x00000FFF)
-#define ADC_TR1_LT1_0 ((u32_t)0x00000001)
-#define ADC_TR1_LT1_1 ((u32_t)0x00000002)
-#define ADC_TR1_LT1_2 ((u32_t)0x00000004)
-#define ADC_TR1_LT1_3 ((u32_t)0x00000008)
-#define ADC_TR1_LT1_4 ((u32_t)0x00000010)
-#define ADC_TR1_LT1_5 ((u32_t)0x00000020)
-#define ADC_TR1_LT1_6 ((u32_t)0x00000040)
-#define ADC_TR1_LT1_7 ((u32_t)0x00000080)
-#define ADC_TR1_LT1_8 ((u32_t)0x00000100)
-#define ADC_TR1_LT1_9 ((u32_t)0x00000200)
-#define ADC_TR1_LT1_10 ((u32_t)0x00000400)
-#define ADC_TR1_LT1_11 ((u32_t)0x00000800)
-
-#define ADC_TR1_HT1 ((u32_t)0x0FFF0000)
-#define ADC_TR1_HT1_0 ((u32_t)0x00010000)
-#define ADC_TR1_HT1_1 ((u32_t)0x00020000)
-#define ADC_TR1_HT1_2 ((u32_t)0x00040000)
-#define ADC_TR1_HT1_3 ((u32_t)0x00080000)
-#define ADC_TR1_HT1_4 ((u32_t)0x00100000)
-#define ADC_TR1_HT1_5 ((u32_t)0x00200000)
-#define ADC_TR1_HT1_6 ((u32_t)0x00400000)
-#define ADC_TR1_HT1_7 ((u32_t)0x00800000)
-#define ADC_TR1_HT1_8 ((u32_t)0x01000000)
-#define ADC_TR1_HT1_9 ((u32_t)0x02000000)
-#define ADC_TR1_HT1_10 ((u32_t)0x04000000)
-#define ADC_TR1_HT1_11 ((u32_t)0x08000000)
-
 #define ADC_CHSELR_CHSEL ((u32_t)0x0007FFFF)
 #define ADC_CHSELR_CHSEL18 ((u32_t)0x00040000)
 #define ADC_CHSELR_CHSEL17 ((u32_t)0x00020000)
@@ -157,6 +104,12 @@ struct adc_common
 #define ADC_CHSELR_CHSEL1 ((u32_t)0x00000002)
 #define ADC_CHSELR_CHSEL0 ((u32_t)0x00000001)
 
+#define ADC_CR_ADEN ((u32_t)0x00000001)
+#define ADC_CR_ADDIS ((u32_t)0x00000002)
+#define ADC_CR_ADSTART ((u32_t)0x00000004)
+#define ADC_CR_ADSTP ((u32_t)0x00000010)
+#define ADC_CR_ADCAL ((u32_t)0x80000000)
+
 #define ADC_DR_DATA ((u32_t)0x0000FFFF)
 #define ADC_DR_DATA_0 ((u32_t)0x00000001)
 #define ADC_DR_DATA_1 ((u32_t)0x00000002)
@@ -175,8 +128,50 @@ struct adc_common
 #define ADC_DR_DATA_14 ((u32_t)0x00004000)
 #define ADC_DR_DATA_15 ((u32_t)0x00008000)
 
-#define ADC_CCR_VREFEN ((u32_t)0x00400000)
-#define ADC_CCR_TSEN ((u32_t)0x00800000)
-#define ADC_CCR_VBATEN ((u32_t)0x01000000)
+#define ADC_IER_ADRDYIE ((u32_t)0x00000001)
+#define ADC_IER_EOSMPIE ((u32_t)0x00000002)
+#define ADC_IER_EOCIE ((u32_t)0x00000004)
+#define ADC_IER_EOSIE ((u32_t)0x00000008)
+#define ADC_IER_OVRIE ((u32_t)0x00000010)
+#define ADC_IER_AWD1IE ((u32_t)0x00000080)
+
+#define ADC_ISR_ADRDY ((u32_t)0x00000001)
+#define ADC_ISR_EOSMP ((u32_t)0x00000002)
+#define ADC_ISR_EOC ((u32_t)0x00000004)
+#define ADC_ISR_EOS ((u32_t)0x00000008)
+#define ADC_ISR_OVR ((u32_t)0x00000010)
+#define ADC_ISR_AWD1 ((u32_t)0x00000080)
+
+#define ADC_SMPR_SMP ((u32_t)0x00000007)
+#define ADC_SMPR_SMP_0 ((u32_t)0x00000001)
+#define ADC_SMPR_SMP_1 ((u32_t)0x00000002)
+#define ADC_SMPR_SMP_2 ((u32_t)0x00000004)
+
+#define ADC_TR1_LT1 ((u32_t)0x00000FFF)
+#define ADC_TR1_LT1_0 ((u32_t)0x00000001)
+#define ADC_TR1_LT1_1 ((u32_t)0x00000002)
+#define ADC_TR1_LT1_2 ((u32_t)0x00000004)
+#define ADC_TR1_LT1_3 ((u32_t)0x00000008)
+#define ADC_TR1_LT1_4 ((u32_t)0x00000010)
+#define ADC_TR1_LT1_5 ((u32_t)0x00000020)
+#define ADC_TR1_LT1_6 ((u32_t)0x00000040)
+#define ADC_TR1_LT1_7 ((u32_t)0x00000080)
+#define ADC_TR1_LT1_8 ((u32_t)0x00000100)
+#define ADC_TR1_LT1_9 ((u32_t)0x00000200)
+#define ADC_TR1_LT1_10 ((u32_t)0x00000400)
+#define ADC_TR1_LT1_11 ((u32_t)0x00000800)
+#define ADC_TR1_HT1 ((u32_t)0x0FFF0000)
+#define ADC_TR1_HT1_0 ((u32_t)0x00010000)
+#define ADC_TR1_HT1_1 ((u32_t)0x00020000)
+#define ADC_TR1_HT1_2 ((u32_t)0x00040000)
+#define ADC_TR1_HT1_3 ((u32_t)0x00080000)
+#define ADC_TR1_HT1_4 ((u32_t)0x00100000)
+#define ADC_TR1_HT1_5 ((u32_t)0x00200000)
+#define ADC_TR1_HT1_6 ((u32_t)0x00400000)
+#define ADC_TR1_HT1_7 ((u32_t)0x00800000)
+#define ADC_TR1_HT1_8 ((u32_t)0x01000000)
+#define ADC_TR1_HT1_9 ((u32_t)0x02000000)
+#define ADC_TR1_HT1_10 ((u32_t)0x04000000)
+#define ADC_TR1_HT1_11 ((u32_t)0x08000000)
 
 #endif

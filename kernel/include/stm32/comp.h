@@ -28,17 +28,10 @@
 
 struct comp
 {
-    volatile u16_t CSR;
-};
-
-struct comp_common
-{
     volatile u32_t CSR;
 };
 
-#define COMP1 ((struct comp *)0x4001001C)
-#define COMP2 ((struct comp *)0x4001001E)
-#define COMP_COMMON ((struct comp_common *)0x4001001C)
+#define COMP ((struct comp *)0x4001001C)
 
 #define COMP_CSR_COMP1EN ((u32_t)0x00000001)
 #define COMP_CSR_COMP1SW1 ((u32_t)0x00000002)
@@ -59,7 +52,6 @@ struct comp_common
 #define COMP_CSR_COMP1HYST_1 ((u32_t)0x00002000)
 #define COMP_CSR_COMP1OUT ((u32_t)0x00004000)
 #define COMP_CSR_COMP1LOCK ((u32_t)0x00008000)
-
 #define COMP_CSR_COMP2EN ((u32_t)0x00010000)
 #define COMP_CSR_COMP2MODE ((u32_t)0x000C0000)
 #define COMP_CSR_COMP2MODE_0 ((u32_t)0x00040000)
@@ -79,24 +71,5 @@ struct comp_common
 #define COMP_CSR_COMP2HYST_1 ((u32_t)0x20000000)
 #define COMP_CSR_COMP2OUT ((u32_t)0x40000000)
 #define COMP_CSR_COMP2LOCK ((u32_t)0x80000000)
-
-#define COMP_CSR_COMPxEN ((u16_t)0x00000001)
-#define COMP_CSR_COMPxMODE ((u16_t)0x0000000C)
-#define COMP_CSR_COMPxMODE_0 ((u16_t)0x00000004)
-#define COMP_CSR_COMPxMODE_1 ((u16_t)0x00000008)
-#define COMP_CSR_COMPxINSEL ((u16_t)0x00000070)
-#define COMP_CSR_COMPxINSEL_0 ((u16_t)0x00000010)
-#define COMP_CSR_COMPxINSEL_1 ((u16_t)0x00000020)
-#define COMP_CSR_COMPxINSEL_2 ((u16_t)0x00000040)
-#define COMP_CSR_COMPxOUTSEL ((u16_t)0x00000700)
-#define COMP_CSR_COMPxOUTSEL_0 ((u16_t)0x00000100)
-#define COMP_CSR_COMPxOUTSEL_1 ((u16_t)0x00000200)
-#define COMP_CSR_COMPxOUTSEL_2 ((u16_t)0x00000400)
-#define COMP_CSR_COMPxPOL ((u16_t)0x00000800)
-#define COMP_CSR_COMPxHYST ((u16_t)0x00003000)
-#define COMP_CSR_COMPxHYST_0 ((u16_t)0x00001000)
-#define COMP_CSR_COMPxHYST_1 ((u16_t)0x00002000)
-#define COMP_CSR_COMPxOUT ((u16_t)0x00004000)
-#define COMP_CSR_COMPxLOCK ((u16_t)0x00008000)
 
 #endif

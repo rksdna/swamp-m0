@@ -33,7 +33,12 @@ struct ob
     volatile u16_t DATA0;
     volatile u16_t DATA1;
     volatile u16_t WRP0;
+    volatile u16_t WRP1;
+    volatile u16_t WRP2;
+    volatile u16_t WRP3;
 };
+
+#define OB ((struct ob *)0x1FFFF800)
 
 #define OB_RDP_RDP ((u32_t)0x000000FF)
 #define OB_RDP_nRDP ((u32_t)0x0000FF00)
@@ -43,5 +48,14 @@ struct ob
 
 #define OB_WRP0_WRP0 ((u32_t)0x000000FF)
 #define OB_WRP0_nWRP0 ((u32_t)0x0000FF00)
+
+#define OB_WRP1_WRP1 ((u32_t)0x00FF0000)
+#define OB_WRP1_nWRP1 ((u32_t)0xFF000000)
+
+#define OB_WRP2_WRP2 ((u32_t)0x000000FF)
+#define OB_WRP2_nWRP2 ((u32_t)0x0000FF00)
+
+#define OB_WRP3_WRP3 ((u32_t)0x00FF0000)
+#define OB_WRP3_nWRP3 ((u32_t)0xFF000000)
 
 #endif

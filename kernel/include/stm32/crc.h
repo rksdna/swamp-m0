@@ -35,21 +35,26 @@ struct crc
     volatile u32_t CR;
     u32_t RESERVED2;
     volatile u32_t INIT;
-    volatile u32_t RESERVED3;
+    volatile u32_t POL;
 };
 
 #define CRC ((struct crc *)0x40023000)
-
-#define CRC_DR_DR ((u32_t)0xFFFFFFFF)
-
-#define CRC_IDR_IDR ((u8_t)0xFF)
 
 #define CRC_CR_RESET ((u32_t)0x00000001)
 #define CRC_CR_REV_IN ((u32_t)0x00000060)
 #define CRC_CR_REV_IN_0 ((u32_t)0x00000020)
 #define CRC_CR_REV_IN_1 ((u32_t)0x00000040)
 #define CRC_CR_REV_OUT ((u32_t)0x00000080)
+#define CRC_CR_POLYSIZE ((u32_t)0x00000018)
+#define CRC_CR_POLYSIZE_0 ((u32_t)0x00000008)
+#define CRC_CR_POLYSIZE_1 ((u32_t)0x00000010)
+
+#define CRC_DR_DR ((u32_t)0xFFFFFFFF)
+
+#define CRC_IDR_IDR ((uint8_t)0xFF)
 
 #define CRC_INIT_INIT ((u32_t)0xFFFFFFFF)
+
+#define CRC_POL_POL ((u32_t)0xFFFFFFFF)
 
 #endif

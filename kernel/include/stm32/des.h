@@ -21,35 +21,22 @@
  * THE SOFTWARE.
  */
 
-#ifndef IWDG_H
-#define IWDG_H
+#ifndef DES_H
+#define DES_H
 
 #include <types.h>
 
-struct iwdg
+struct des
 {
-    volatile u32_t KR;
-    volatile u32_t PR;
-    volatile u32_t RLR;
-    volatile u32_t SR;
-    volatile u32_t WINR;
+    volatile u32_t UID[3];
+    u32_t RESERVED[5];
+    volatile u16_t FSIZE;
 };
 
-#define IWDG ((struct iwdg *)0x40003000)
+#define DES ((struct des *)0x1FFFF7AC)
 
-#define IWDG_KR_KEY ((u32_t)0xFFFF)
+#define DES_UIDx_UID ((u32_t)0xFFFFFFFF)
 
-#define IWDG_PR_PR ((u32_t)0x07)
-#define IWDG_PR_PR_0 ((u32_t)0x01)
-#define IWDG_PR_PR_1 ((u32_t)0x02)
-#define IWDG_PR_PR_2 ((u32_t)0x04)
-
-#define IWDG_RLR_RL ((u32_t)0x0FFF)
-
-#define IWDG_SR_PVU ((u32_t)0x01)
-#define IWDG_SR_RVU ((u32_t)0x02)
-#define IWDG_SR_WVU ((u32_t)0x04)
-
-#define IWDG_WINR_WIN ((u32_t)0x0FFF)
+#define DES_FSIZE_FSIZE ((u16_t)0xFFFF)
 
 #endif

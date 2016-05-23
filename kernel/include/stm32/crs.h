@@ -36,15 +36,6 @@ struct crs
 
 #define CRS ((struct crs *)0x40006C00)
 
-#define CRS_CR_SYNCOKIE ((u32_t)0x00000001)
-#define CRS_CR_SYNCWARNIE ((u32_t)0x00000002)
-#define CRS_CR_ERRIE ((u32_t)0x00000004)
-#define CRS_CR_ESYNCIE ((u32_t)0x00000008)
-#define CRS_CR_CEN ((u32_t)0x00000020)
-#define CRS_CR_AUTOTRIMEN ((u32_t)0x00000040)
-#define CRS_CR_SWSYNC ((u32_t)0x00000080)
-#define CRS_CR_TRIM ((u32_t)0x00003F00)
-
 #define CRS_CFGR_RELOAD ((u32_t)0x0000FFFF)
 #define CRS_CFGR_FELIM ((u32_t)0x00FF0000)
 #define CRS_CFGR_SYNCDIV ((u32_t)0x07000000)
@@ -56,6 +47,20 @@ struct crs
 #define CRS_CFGR_SYNCSRC_1 ((u32_t)0x20000000)
 #define CRS_CFGR_SYNCPOL ((u32_t)0x80000000)
 
+#define CRS_CR_SYNCOKIE ((u32_t)0x00000001)
+#define CRS_CR_SYNCWARNIE ((u32_t)0x00000002)
+#define CRS_CR_ERRIE ((u32_t)0x00000004)
+#define CRS_CR_ESYNCIE ((u32_t)0x00000008)
+#define CRS_CR_CEN ((u32_t)0x00000020)
+#define CRS_CR_AUTOTRIMEN ((u32_t)0x00000040)
+#define CRS_CR_SWSYNC ((u32_t)0x00000080)
+#define CRS_CR_TRIM ((u32_t)0x00003F00)
+
+#define CRS_ICR_SYNCOKC ((u32_t)0x00000001)
+#define CRS_ICR_SYNCWARNC ((u32_t)0x00000002)
+#define CRS_ICR_ERRC ((u32_t)0x00000004)
+#define CRS_ICR_ESYNCC ((u32_t)0x00000008)
+
 #define CRS_ISR_SYNCOKF ((u32_t)0x00000001)
 #define CRS_ISR_SYNCWARNF ((u32_t)0x00000002)
 #define CRS_ISR_ERRF ((u32_t)0x00000004)
@@ -65,10 +70,5 @@ struct crs
 #define CRS_ISR_TRIMOVF ((u32_t)0x00000400)
 #define CRS_ISR_FEDIR ((u32_t)0x00008000)
 #define CRS_ISR_FECAP ((u32_t)0xFFFF0000)
-
-#define CRS_ICR_SYNCOKC ((u32_t)0x00000001)
-#define CRS_ICR_SYNCWARNC ((u32_t)0x00000002)
-#define CRS_ICR_ERRC ((u32_t)0x00000004)
-#define CRS_ICR_ESYNCC ((u32_t)0x00000008)
 
 #endif
