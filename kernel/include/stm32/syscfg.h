@@ -30,7 +30,10 @@ struct syscfg
 {
     volatile u32_t CFGR1;
     u32_t RESERVED;
-    volatile u32_t EXTICR[4];
+    volatile u32_t EXTICR1;
+    volatile u32_t EXTICR2;
+    volatile u32_t EXTICR3;
+    volatile u32_t EXTICR4;
     volatile u32_t CFGR2;
     u32_t RESERVED1[25];
     volatile u32_t IT_LINE_SR[32];
