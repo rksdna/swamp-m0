@@ -18,7 +18,7 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * THE SOFTWARE.3
  */
 
 #ifndef HID_H
@@ -26,17 +26,26 @@
 
 #include <types.h>
 
-struct hid_report
+struct hid_keyboard_report
 {
     u8_t modifier;
     u8_t reserved;
     u8_t keys[6];
 };
 
+struct hid_mouse_report
+{
+    u8_t buttons;
+    s8_t x;
+    s8_t y;
+};
+
 void start_hid_service(void);
 void stop_hid_service(void);
 
 u32_t has_hid_connection(void);
-void write_hid_report(struct hid_report *report);
+u32_t get_hid_led_status(void);
+void write_hid_keyboard_report(struct hid_keyboard_report *report);
+void write_hid_mouse_report(struct hid_mouse_report *report);
 
 #endif
