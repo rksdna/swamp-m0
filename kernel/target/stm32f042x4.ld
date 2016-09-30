@@ -1,6 +1,6 @@
 /*
  * STM32F042x4 linker script
- * Copyright (c) 2016 Andrey Skrypka, Vladimir Trofimov
+ * Copyright (c) 2016 rksdna
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
