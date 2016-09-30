@@ -25,7 +25,7 @@
 
 TARGET = app
 SCRIPT = kernel/target/stm32f042x4.ld
-DIRS = kernel cdc
+DIRS = kernel
 INCDIRS = $(addsuffix /include, $(DIRS))
 SRCDIRS = $(addsuffix /source, $(DIRS)) .
 PORT = /dev/ttyUSB0
