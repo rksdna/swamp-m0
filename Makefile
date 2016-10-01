@@ -23,19 +23,20 @@
 
 # Project files
 
-TARGET = app
-SCRIPT = kernel/target/stm32f042x4.ld
-DIRS = kernel
+TARGET ?= swamp
+SCRIPT ?= kernel/target/stm32f042x4.ld
+DIRS ?= kernel
+FILES ?=
+PORT ?= /dev/ttyUSB0
 INCDIRS = $(addsuffix /include, $(DIRS))
-SRCDIRS = $(addsuffix /source, $(DIRS)) .
-PORT = /dev/ttyUSB0
+SRCDIRS = $(addsuffix /source, $(DIRS))
 
 HEX = $(TARGET).hex
 ELF = $(TARGET).elf
 MAP = $(TARGET).map
 LST = $(TARGET).lst
 INC = $(foreach DIR, $(INCDIRS),-I $(DIR))
-SRC = $(foreach DIR, $(SRCDIRS), $(wildcard $(DIR)/*.c))
+SRC = $(foreach DIR, $(SRCDIRS), $(wildcard $(DIR)/*.c)) $(FILES)
 OBJ = $(SRC:.c=.o)
 DEP = $(SRC:.c=.d)
 
