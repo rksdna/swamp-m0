@@ -10,6 +10,11 @@ make FILES="samples/source/cdc_sample.c" DIRS="kernel cdc" all
 make FILES="samples/source/hid_sample.c" DIRS="kernel hid" all
 ```
 
+Clean samples:
+```
+make DIRS="kernel cdc hid samples" clean
+```
+
 Building your application:
 ```
 make TARGET="app" DIRS="app kernel cdc" all
