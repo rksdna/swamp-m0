@@ -1,7 +1,7 @@
 #Swamp
 
 Cooperative multitasking operating system for Cortex-M0 **STM32F0xx** controllers.
-See *samples* directory to understand how to use the system.
+See *sample.c* to understand how to use the system and its modules.
 
 Building samples:
 ```
