@@ -29,9 +29,9 @@
 #include <timers.h>
 #include <debug.h>
 #include <tools.h>
-#include <hid.h>
+#include "board.h"
 
-void debug_put(void *data, char value)
+static void debug_put(void *data, char value)
 {
     while (~USART2->ISR & USART_ISR_TXE)
         continue;
@@ -41,42 +41,7 @@ void debug_put(void *data, char value)
 
 struct stream debug_stream = {debug_put, 0};
 
-static struct hid_keyboard_report keyboard;
-static struct hid_mouse_report mouse;
-
-static void press(u8_t code)
-{
-    keyboard.keys[0] = code;
-    write_hid_keyboard_report(&keyboard);
-    keyboard.keys[0] = 0x00;
-    write_hid_keyboard_report(&keyboard);
-}
-
-static void move(s8_t x, s8_t y)
-{
-    mouse.x = x;
-    mouse.y = y;
-    write_hid_mouse_report(&mouse);
-}
-
-static struct thread service_thread;
-static u8_t stack[256];
-
-static void service(void *data)
-{
-    WASTE(data);
-    while (1)
-    {
-        if (get_hid_led_status())
-            GPIOA->BSRR = GPIO_BSRR_BS_0;
-        else
-            GPIOA->BSRR = GPIO_BSRR_BR_0;
-
-        sleep(100);
-    }
-}
-
-void main(void)
+void startup_board(void)
 {
     RCC->CR = RCC_CR_HSEON | RCC_CR_HSION;
     wait_status(&RCC->CR, RCC_CR_HSERDY);
@@ -106,31 +71,4 @@ void main(void)
     start_timers_clock(48000);
 
     debug("hello\n");
-
-    start_thread(&service_thread, service, 0, stack, sizeof(stack));
-
-    start_hid_service();
-    while (1)
-    {
-        wait_signal(has_hid_connection);
-        debug("connected\n");
-
-        while (has_hid_connection())
-        {
-            press(0x04);
-            press(0x05);
-            press(0x06);
-            sleep(250);
-            move(0, -100);
-            sleep(250);
-            move(-100, 0);
-            sleep(250);
-            move(0, 100);
-            sleep(250);
-            move(100, 0);
-            sleep(200);
-        }
-
-        debug("disconnected\n");
-    }
 }

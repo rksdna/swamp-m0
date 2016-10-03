@@ -23,20 +23,21 @@
 
 # Project files
 
-TARGET ?= swamp
+TARGET ?= app
 SCRIPT ?= kernel/target/stm32f042x4.ld
-DIRS ?= kernel
-FILES ?=
+MODULES ?= app kernel
 PORT ?= /dev/ttyUSB0
-INCDIRS = $(addsuffix /include, $(DIRS))
-SRCDIRS = $(addsuffix /source, $(DIRS))
+
+INCDIRS = $(addsuffix /include, $(MODULES))
+SRCDIRS = $(addsuffix /source, $(MODULES))
 
 HEX = $(TARGET).hex
 ELF = $(TARGET).elf
 MAP = $(TARGET).map
 LST = $(TARGET).lst
+DEF = $(foreach MOD, $(MODULES),-D swamp_$(MOD)_module)
 INC = $(foreach DIR, $(INCDIRS),-I $(DIR))
-SRC = $(foreach DIR, $(SRCDIRS), $(wildcard $(DIR)/*.c)) $(FILES)
+SRC = $(foreach DIR, $(SRCDIRS), $(wildcard $(DIR)/*.c))
 OBJ = $(SRC:.c=.o)
 DEP = $(SRC:.c=.d)
 
@@ -52,7 +53,7 @@ SZ = $(PREFIX)size
 BS = swamp-boot
 RM = rm -f
 
-CFLAGS = -nostdinc -mcpu=cortex-m0 -mthumb -Wall -Wno-main -Os -g -MD $(INC) 
+CFLAGS = -nostdinc -mcpu=cortex-m0 -mthumb -Wall -Wno-main -Os -g -MD $(INC) $(DEF)
 LFLAGS = -nostdlib -T $(SCRIPT) -Map $(MAP) 
 
 -include $(DEP)
@@ -64,8 +65,7 @@ LFLAGS = -nostdlib -T $(SCRIPT) -Map $(MAP)
 all: $(HEX) $(LST)
 
 $(HEX): $(ELF)
-	@echo "Creating $(HEX)..."
-	
+	@echo "Creating $(HEX)..."	
 	$(OC) -j .text -j .data -O ihex $< $@
 
 $(LST): $(ELF)

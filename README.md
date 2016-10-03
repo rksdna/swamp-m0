@@ -5,17 +5,17 @@ See *samples* directory to understand how to use the system.
 
 Building samples:
 ```
-make FILES="samples/source/kernel_sample.c" DIRS="kernel" all
-make FILES="samples/source/cdc_sample.c" DIRS="kernel cdc" all
-make FILES="samples/source/hid_sample.c" DIRS="kernel hid" all
+make MODULES="sample kernel" all
+make MODULES="sample kernel cdc" all
+make MODULES="sample kernel hid" all
 ```
 
 Clean samples:
 ```
-make DIRS="kernel cdc hid samples" clean
+make MODULES="sample kernel cdc hid" clean
 ```
 
 Building your application:
 ```
-make TARGET="app" DIRS="app kernel cdc" all
+make MODULES="app kernel" all
 ```
