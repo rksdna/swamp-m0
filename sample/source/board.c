@@ -25,6 +25,7 @@
 #include <stm32/usart.h>
 #include <stm32/gpio.h>
 #include <stm32/rcc.h>
+#include <stm32/des.h>
 #include <threads.h>
 #include <timers.h>
 #include <debug.h>
@@ -71,4 +72,9 @@ void startup_board(void)
     start_timers_clock(48000);
 
     debug("hello\n");
+}
+
+void board_info(void)
+{
+    debug("id: %*m flash: %dKbytes\n", sizeof(DES->ID), DES->ID, DES->FSIZE & DES_FSIZE_FSIZE);
 }

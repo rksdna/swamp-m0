@@ -27,5 +27,6 @@
 #include <types.h>
 
 void startup_board(void);
+void board_info(void);
 
 #endif

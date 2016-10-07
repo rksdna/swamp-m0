@@ -209,6 +209,7 @@ void main(void)
     start_thread(&thread_2, (function_t)blink, &data_2, stack_2, sizeof(stack_2));
 
     debug("main: hello\n");
+    board_info();
 
     while (count--)
     {
