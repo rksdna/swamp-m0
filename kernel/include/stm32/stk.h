@@ -42,6 +42,7 @@ struct stk
 #define STK_CTRL_COUNTFLAG ((u32_t)0x00010000)
 
 #define STK_LOAD_RELOAD ((u32_t)0x00FFFFFF)
+
 #define STK_VAL_CURRENT ((u32_t)0x00FFFFFF)
 
 #define STK_CALIB_TENMS ((u32_t)0x00FFFFFF)

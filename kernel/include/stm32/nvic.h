@@ -178,9 +178,44 @@ struct nvic
 #define NVIC_ICPR_CLRPEND_30 ((u32_t)0x40000000)
 #define NVIC_ICPR_CLRPEND_31 ((u32_t)0x80000000)
 
-#define NVIC_IPRx_PR_0 ((u32_t)0x000000FF)
-#define NVIC_IPRx_PR_1 ((u32_t)0x0000FF00)
-#define NVIC_IPRx_PR_2 ((u32_t)0x00FF0000)
-#define NVIC_IPRx_PR_3 ((u32_t)0xFF000000)
+#define NVIC_IPR0_PR_0 ((u32_t)0x000000FF)
+#define NVIC_IPR0_PR_1 ((u32_t)0x0000FF00)
+#define NVIC_IPR0_PR_2 ((u32_t)0x00FF0000)
+#define NVIC_IPR0_PR_3 ((u32_t)0xFF000000)
+
+#define NVIC_IPR1_PR_4 ((u32_t)0x000000FF)
+#define NVIC_IPR1_PR_5 ((u32_t)0x0000FF00)
+#define NVIC_IPR1_PR_6 ((u32_t)0x00FF0000)
+#define NVIC_IPR1_PR_7 ((u32_t)0xFF000000)
+
+#define NVIC_IPR2_PR_8 ((u32_t)0x000000FF)
+#define NVIC_IPR2_PR_9 ((u32_t)0x0000FF00)
+#define NVIC_IPR2_PR_10 ((u32_t)0x00FF0000)
+#define NVIC_IPR2_PR_11 ((u32_t)0xFF000000)
+
+#define NVIC_IPR3_PR_12 ((u32_t)0x000000FF)
+#define NVIC_IPR3_PR_13 ((u32_t)0x0000FF00)
+#define NVIC_IPR3_PR_14 ((u32_t)0x00FF0000)
+#define NVIC_IPR3_PR_15 ((u32_t)0xFF000000)
+
+#define NVIC_IPR4_PR_16 ((u32_t)0x000000FF)
+#define NVIC_IPR4_PR_17 ((u32_t)0x0000FF00)
+#define NVIC_IPR4_PR_18 ((u32_t)0x00FF0000)
+#define NVIC_IPR4_PR_19 ((u32_t)0xFF000000)
+
+#define NVIC_IPR5_PR_20 ((u32_t)0x000000FF)
+#define NVIC_IPR5_PR_21 ((u32_t)0x0000FF00)
+#define NVIC_IPR5_PR_22 ((u32_t)0x00FF0000)
+#define NVIC_IPR5_PR_23 ((u32_t)0xFF000000)
+
+#define NVIC_IPR6_PR_24 ((u32_t)0x000000FF)
+#define NVIC_IPR6_PR_25 ((u32_t)0x0000FF00)
+#define NVIC_IPR6_PR_26 ((u32_t)0x00FF0000)
+#define NVIC_IPR6_PR_27 ((u32_t)0xFF000000)
+
+#define NVIC_IPR7_PR_28 ((u32_t)0x000000FF)
+#define NVIC_IPR7_PR_29 ((u32_t)0x0000FF00)
+#define NVIC_IPR7_PR_30 ((u32_t)0x00FF0000)
+#define NVIC_IPR7_PR_31 ((u32_t)0xFF000000)
 
 #endif

@@ -276,6 +276,7 @@ static void output_ep0_handler(void)
 static void setup_ep0_handler(void)
 {
     read_pma((void *)&setup, EP0_RX_DATA, sizeof(struct usb_setup));
+
     switch (setup.request)
     {
     case GET_DEVICE_DESCRIPTOR:

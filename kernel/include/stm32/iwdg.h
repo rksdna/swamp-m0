@@ -37,19 +37,21 @@ struct iwdg
 
 #define IWDG ((struct iwdg *)0x40003000)
 
-#define IWDG_KR_KEY ((u32_t)0xFFFF)
+#define IWDG_KR_KEY ((u32_t)0x0000FFFF)
+#define IWDG_KR_KEY_KEY_RESET ((u32_t)0x0000AAAA)
+#define IWDG_KR_KEY_KEY_ACCESS ((u32_t)0x00005555)
 
-#define IWDG_PR_PR ((u32_t)0x07)
-#define IWDG_PR_PR_0 ((u32_t)0x01)
-#define IWDG_PR_PR_1 ((u32_t)0x02)
-#define IWDG_PR_PR_2 ((u32_t)0x04)
+#define IWDG_PR_PR ((u32_t)0x00000007)
+#define IWDG_PR_PR_0 ((u32_t)0x00000001)
+#define IWDG_PR_PR_1 ((u32_t)0x00000002)
+#define IWDG_PR_PR_2 ((u32_t)0x00000004)
 
-#define IWDG_RLR_RL ((u32_t)0x0FFF)
+#define IWDG_RLR_RL ((u32_t)0x00000FFF)
 
-#define IWDG_SR_PVU ((u32_t)0x01)
-#define IWDG_SR_RVU ((u32_t)0x02)
-#define IWDG_SR_WVU ((u32_t)0x04)
+#define IWDG_SR_PVU ((u32_t)0x00000001)
+#define IWDG_SR_RVU ((u32_t)0x00000002)
+#define IWDG_SR_WVU ((u32_t)0x00000004)
 
-#define IWDG_WINR_WIN ((u32_t)0x0FFF)
+#define IWDG_WINR_WIN ((u32_t)0x00000FFF)
 
 #endif

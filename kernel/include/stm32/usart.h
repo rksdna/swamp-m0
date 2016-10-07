@@ -37,10 +37,8 @@ struct usart
     volatile u32_t RQR;
     volatile u32_t ISR;
     volatile u32_t ICR;
-    volatile u16_t RDR;
-    u16_t RESERVED1;
-    volatile u16_t TDR;
-    u16_t RESERVED2;
+    volatile u32_t RDR;
+    volatile u32_t TDR;
 };
 
 #define USART1 ((struct usart *)0x40013800)
@@ -175,7 +173,7 @@ struct usart
 #define USART_ISR_RWU ((u32_t)0x00080000)
 #define USART_ISR_WUF ((u32_t)0x00100000)
 
-#define USART_RDR_RDR ((u16_t)0x01FF)
+#define USART_RDR_RDR ((u32_t)0x000001FF)
 
 #define USART_RQR_ABRRQ ((u32_t)0x00000001)
 #define USART_RQR_SBKRQ ((u32_t)0x00000002)
@@ -186,6 +184,6 @@ struct usart
 #define USART_RTOR_RTO ((u32_t)0x00FFFFFF)
 #define USART_RTOR_BLEN ((u32_t)0xFF000000)
 
-#define USART_TDR_TDR ((u16_t)0x01FF)
+#define USART_TDR_TDR ((u32_t)0x000001FF)
 
 #endif

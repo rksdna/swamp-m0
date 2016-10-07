@@ -40,22 +40,28 @@ struct ob
 
 #define OB ((struct ob *)0x1FFFF800)
 
-#define OB_RDP_RDP ((u32_t)0x000000FF)
-#define OB_RDP_nRDP ((u32_t)0x0000FF00)
+#define OB_RDP_RDP ((u16_t)0x00FF)
+#define OB_RDP_NRDP ((u16_t)0xFF00)
 
-#define OB_USER_USER ((u32_t)0x00FF0000)
-#define OB_USER_nUSER ((u32_t)0xFF000000)
+#define OB_USER_USER ((u16_t)0x00FF)
+#define OB_USER_NUSER ((u16_t)0xFF00)
 
-#define OB_WRP0_WRP0 ((u32_t)0x000000FF)
-#define OB_WRP0_nWRP0 ((u32_t)0x0000FF00)
+#define OB_DATA0_DATA0 ((u16_t)0x00FF)
+#define OB_DATA0_NDATA0 ((u16_t)0xFF00)
 
-#define OB_WRP1_WRP1 ((u32_t)0x00FF0000)
-#define OB_WRP1_nWRP1 ((u32_t)0xFF000000)
+#define OB_DATA1_DATA1 ((u16_t)0x00FF)
+#define OB_DATA1_NDATA1 ((u16_t)0xFF00)
 
-#define OB_WRP2_WRP2 ((u32_t)0x000000FF)
-#define OB_WRP2_nWRP2 ((u32_t)0x0000FF00)
+#define OB_WRP0_WRP0 ((u16_t)0x00FF)
+#define OB_WRP0_NWRP0 ((u16_t)0xFF00)
 
-#define OB_WRP3_WRP3 ((u32_t)0x00FF0000)
-#define OB_WRP3_nWRP3 ((u32_t)0xFF000000)
+#define OB_WRP1_WRP1 ((u16_t)0x00FF)
+#define OB_WRP1_NWRP1 ((u16_t)0xFF00)
+
+#define OB_WRP2_WRP2 ((u16_t)0x00FF)
+#define OB_WRP2_NWRP2 ((u16_t)0xFF00)
+
+#define OB_WRP3_WRP3 ((u16_t)0x00FF)
+#define OB_WRP3_NWRP3 ((u16_t)0xFF00)
 
 #endif

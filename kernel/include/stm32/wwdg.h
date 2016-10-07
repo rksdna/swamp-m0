@@ -35,28 +35,14 @@ struct wwdg
 
 #define WWDG ((struct wwdg *)0x40002C00)
 
+#define WWDG_CR_T ((u32_t)0x0000007F)
+#define WWDG_CR_WDGA ((u32_t)0x00000080)
+
 #define WWDG_CFR_W ((u32_t)0x0000007F)
-#define WWDG_CFR_W_0 ((u32_t)0x00000001)
-#define WWDG_CFR_W_1 ((u32_t)0x00000002)
-#define WWDG_CFR_W_2 ((u32_t)0x00000004)
-#define WWDG_CFR_W_3 ((u32_t)0x00000008)
-#define WWDG_CFR_W_4 ((u32_t)0x00000010)
-#define WWDG_CFR_W_5 ((u32_t)0x00000020)
-#define WWDG_CFR_W_6 ((u32_t)0x00000040)
 #define WWDG_CFR_WDGTB ((u32_t)0x00000180)
 #define WWDG_CFR_WDGTB_0 ((u32_t)0x00000080)
 #define WWDG_CFR_WDGTB_1 ((u32_t)0x00000100)
 #define WWDG_CFR_EWI ((u32_t)0x00000200)
-
-#define WWDG_CR_T ((u32_t)0x0000007F)
-#define WWDG_CR_T_0 ((u32_t)0x00000001)
-#define WWDG_CR_T_1 ((u32_t)0x00000002)
-#define WWDG_CR_T_2 ((u32_t)0x00000004)
-#define WWDG_CR_T_3 ((u32_t)0x00000008)
-#define WWDG_CR_T_4 ((u32_t)0x00000010)
-#define WWDG_CR_T_5 ((u32_t)0x00000020)
-#define WWDG_CR_T_6 ((u32_t)0x00000040)
-#define WWDG_CR_WDGA ((u32_t)0x00000080)
 
 #define WWDG_SR_EWIF ((u32_t)0x00000001)
 

@@ -29,11 +29,9 @@
 struct crc
 {
     volatile u32_t DR;
-    volatile u8_t IDR;
-    u8_t RESERVED0;
-    u16_t RESERVED1;
+    volatile u32_t IDR;
     volatile u32_t CR;
-    u32_t RESERVED2;
+    u32_t RESERVED0;
     volatile u32_t INIT;
     volatile u32_t POL;
 };
@@ -51,7 +49,7 @@ struct crc
 
 #define CRC_DR_DR ((u32_t)0xFFFFFFFF)
 
-#define CRC_IDR_IDR ((uint8_t)0xFF)
+#define CRC_IDR_IDR ((u32_t)0x000000FF)
 
 #define CRC_INIT_INIT ((u32_t)0xFFFFFFFF)
 

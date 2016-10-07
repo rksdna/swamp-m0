@@ -28,15 +28,15 @@
 
 struct des
 {
-    volatile u32_t UID[3];
+    const volatile u32_t ID[3];
     u32_t RESERVED[5];
-    volatile u16_t FSIZE;
+    const volatile u32_t FSIZE;
 };
 
 #define DES ((struct des *)0x1FFFF7AC)
 
-#define DES_UIDx_UID ((u32_t)0xFFFFFFFF)
+#define DES_ID_ID ((u32_t)0xFFFFFFFF)
 
-#define DES_FSIZE_FSIZE ((u16_t)0xFFFF)
+#define DES_FSIZE_FSIZE ((u32_t)0x0000FFFF)
 
 #endif
