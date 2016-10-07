@@ -55,6 +55,7 @@ struct bind
 {
     volatile u32_t *status;
     u32_t mask;
+    u32_t complement;
 };
 
 extern u32_t stack_section_end;
@@ -219,12 +220,12 @@ void yield_thread(condition_t condition, void *data)
 
 static u32_t status_condition(struct bind *bind)
 {
-    return *(bind->status) & bind->mask;
+    return (*(bind->status) ^ bind->complement) & bind->mask;
 }
 
-void wait_status(volatile u32_t *status, u32_t mask)
+void wait_status(volatile u32_t *status, u32_t mask, u32_t complement)
 {
-    struct bind bind = {status, mask};
+    struct bind bind = {status, mask, complement};
     yield_thread((condition_t)status_condition, &bind);
 }
 

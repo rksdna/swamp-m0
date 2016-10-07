@@ -45,11 +45,11 @@ struct stream debug_stream = {debug_put, 0};
 void startup_board(void)
 {
     RCC->CR = RCC_CR_HSEON | RCC_CR_HSION;
-    wait_status(&RCC->CR, RCC_CR_HSERDY);
+    wait_status(&RCC->CR, RCC_CR_HSERDY, 0);
 
     RCC->CFGR = RCC_CFGR_PLLMUL12 | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC_HSE_PREDIV;
     RCC->CR = RCC_CR_HSEON | RCC_CR_HSION | RCC_CR_PLLON;
-    wait_status(&RCC->CR, RCC_CR_PLLRDY);
+    wait_status(&RCC->CR, RCC_CR_PLLRDY, 0);
 
     RCC->CFGR = RCC_CFGR_PLLMUL12 | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC_HSE_PREDIV | RCC_CFGR_SW_PLL;
     RCC->CFGR3 = 0;
