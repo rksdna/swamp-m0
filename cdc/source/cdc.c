@@ -217,8 +217,8 @@ static u32_t limit(u32_t size, u32_t max_size)
 static void write_pma(const void *data, u32_t offset, u32_t size)
 {
     u32_t count = (size + 1) / sizeof(u16_t);
-    u8_t *source = (u8_t *)data;
-    u16_t *destination = (u16_t *)((u8_t *)PMA + offset);
+    const u8_t *source = data;
+    u16_t *destination = (void *)PMA + offset;
     while (count--)
     {
         u16_t value = *source++;
@@ -229,8 +229,8 @@ static void write_pma(const void *data, u32_t offset, u32_t size)
 
 static void read_pma(void *data, u32_t offset, u32_t size)
 {
-    u8_t *source = (u8_t *)PMA + offset;
     u8_t *destination = (u8_t *)data;
+    const u8_t *source = (const void *)PMA + offset;
     while (size--)
         *destination++ = *source++;
 }
