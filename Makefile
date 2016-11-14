@@ -53,7 +53,7 @@ SZ = $(PREFIX)size
 BS = swamp-boot
 RM = rm -f
 
-CFLAGS = -nostdinc -mcpu=cortex-m0 -mthumb -Wall -Wno-main -Os -g -MD $(INC) $(DEF)
+CFLAGS = -nostdinc -mcpu=cortex-m0 -mthumb -ffreestanding -Wall -Os -g -MD $(INC) $(DEF)
 LFLAGS = -nostdlib -T $(SCRIPT) -Map $(MAP) 
 
 -include $(DEP)
