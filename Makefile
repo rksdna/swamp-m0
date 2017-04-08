@@ -56,8 +56,6 @@ RM = rm -f
 CFLAGS = -nostdinc -mcpu=cortex-m0 -mthumb -ffreestanding -Wall -Os -g -MD $(INC) $(DEF)
 LFLAGS = -nostdlib -T $(SCRIPT) -Map $(MAP) 
 
--include $(DEP)
-
 # Targets
 
 .PHONY: all clean install
@@ -88,4 +86,6 @@ install: $(HEX)
 clean:
 	@echo "Cleaning..."
 	$(RM) $(OBJ) $(DEP) $(ELF) $(MAP) $(HEX) $(LST)
+
+-include $(DEP)
 
