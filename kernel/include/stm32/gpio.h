@@ -206,7 +206,7 @@ struct gpio
 #define GPIO_MODER_GPI(pin) ((u32_t)0x00000000 << (2 * (pin)))
 #define GPIO_MODER_GPO(pin) ((u32_t)0x00000001 << (2 * (pin)))
 #define GPIO_MODER_AFO(pin) ((u32_t)0x00000002 << (2 * (pin)))
-#define GPIO_MODER_AIO(pin) ((u32_t)0x00000003 << (2 * (pin)))
+#define GPIO_MODER_ANA(pin) ((u32_t)0x00000003 << (2 * (pin)))
 
 #define GPIO_ODR_ODR0 ((u32_t)0x00000001)
 #define GPIO_ODR_ODR1 ((u32_t)0x00000002)
