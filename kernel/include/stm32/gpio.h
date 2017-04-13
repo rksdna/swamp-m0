@@ -66,6 +66,9 @@ struct gpio
 #define GPIO_AFRL_AFRL6 ((u32_t)0x0F000000)
 #define GPIO_AFRL_AFRL7 ((u32_t)0xF0000000)
 
+#define GPIO_AFRH(pin, function) ((u32_t)function << (4 * ((pin) - 8)))
+#define GPIO_AFRL(pin, function) ((u32_t)function << (4 * (pin)))
+
 #define GPIO_BRR_BR0 ((u32_t)0x00000001)
 #define GPIO_BRR_BR1 ((u32_t)0x00000002)
 #define GPIO_BRR_BR2 ((u32_t)0x00000004)
@@ -200,6 +203,11 @@ struct gpio
 #define GPIO_MODER_MODER15_0 ((u32_t)0x40000000)
 #define GPIO_MODER_MODER15_1 ((u32_t)0x80000000)
 
+#define GPIO_MODER_GPI(pin) ((u32_t)0x00000000 << (2 * (pin)))
+#define GPIO_MODER_GPO(pin) ((u32_t)0x00000001 << (2 * (pin)))
+#define GPIO_MODER_AFO(pin) ((u32_t)0x00000002 << (2 * (pin)))
+#define GPIO_MODER_AIO(pin) ((u32_t)0x00000003 << (2 * (pin)))
+
 #define GPIO_ODR_ODR0 ((u32_t)0x00000001)
 #define GPIO_ODR_ODR1 ((u32_t)0x00000002)
 #define GPIO_ODR_ODR2 ((u32_t)0x00000004)
@@ -265,6 +273,10 @@ struct gpio
 #define GPIO_OSPEEDR_OSPEEDR15 ((u32_t)0xC0000000)
 #define GPIO_OSPEEDR_OSPEEDR15_0 ((u32_t)0x40000000)
 #define GPIO_OSPEEDR_OSPEEDR15_1 ((u32_t)0x80000000)
+
+#define GPIO_OSPEEDR_LS(pin) ((u32_t)0x00000000 << (2 * (pin)))
+#define GPIO_OSPEEDR_MS(pin) ((u32_t)0x00000001 << (2 * (pin)))
+#define GPIO_OSPEEDR_HS(pin) ((u32_t)0x00000003 << (2 * (pin)))
 
 #define GPIO_OTYPER_OT0 ((u32_t)0x00000001)
 #define GPIO_OTYPER_OT1 ((u32_t)0x00000002)
