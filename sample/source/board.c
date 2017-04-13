@@ -23,6 +23,7 @@
 
 #include <stm32/syscfg.h>
 #include <stm32/usart.h>
+#include <stm32/flash.h>
 #include <stm32/gpio.h>
 #include <stm32/rcc.h>
 #include <stm32/des.h>
@@ -44,6 +45,8 @@ struct stream debug_stream = {debug_put, 0};
 
 void startup_board(void)
 {
+    FLASH->ACR = FLASH_ACR_LATENCY_48MHz | FLASH_ACR_PRFTBE;
+
     RCC->CR = RCC_CR_HSEON | RCC_CR_HSION;
     wait_status(&RCC->CR, RCC_CR_HSERDY, 0);
 
