@@ -89,7 +89,7 @@ void exit_handler(void)
         thread = thread->next;
 
     thread->next = active_thread->next;
-    asm volatile ("svc #0\n" : : : );
+    asm volatile ("svc #0\n" : : : "memory");
 }
 
 __attribute__((naked))
@@ -215,7 +215,7 @@ void yield_thread(condition_t condition, void *data)
 {
     active_thread->condition = condition;
     active_thread->data = data;
-    asm volatile ("svc #0\n" : : : );
+    asm volatile ("svc #0\n" : : : "memory");
 }
 
 static u32_t status_condition(struct bind *bind)
