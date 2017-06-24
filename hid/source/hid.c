@@ -511,7 +511,7 @@ void write_hid_keyboard_report(struct hid_keyboard_report *report)
     PMA[5] = limit(sizeof(struct hid_keyboard_report), EP1_SIZE);
     USB->EP1R = 1 | USB_EP_TYPE_INTERRUPT | USB_EP_STAT_TX_0;
     hid_timeout = 0x20;
-    wait_signal(end_condition);
+    yield_thread((condition_t)end_condition, 0);
 }
 
 void write_hid_mouse_report(struct hid_mouse_report *report)
@@ -520,5 +520,5 @@ void write_hid_mouse_report(struct hid_mouse_report *report)
     PMA[9] = limit(sizeof(struct hid_mouse_report), EP2_SIZE);
     USB->EP2R = 2 | USB_EP_TYPE_INTERRUPT | USB_EP_STAT_TX_0;
     hid_timeout = 0x08;
-    wait_signal(end_condition);
+    yield_thread((condition_t)end_condition, 0);
 }

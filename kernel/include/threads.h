@@ -28,7 +28,6 @@
 
 typedef void (*function_t)(void *data);
 typedef u32_t (*condition_t)(void *data);
-typedef u32_t (*signal_t)(void);
 
 struct thread
 {
@@ -46,8 +45,7 @@ struct mutex
 void start_thread(struct thread *thread, function_t function, void *data, void *stack, u32_t size);
 void yield_thread(condition_t condition, void *data);
 
-void wait_status(volatile u32_t *status, u32_t mask, u32_t complement);
-void wait_signal(signal_t signal);
+void wait_for(volatile u32_t *location, u32_t mask, u32_t value);
 
 void lock_mutex(struct mutex *mutex);
 void unlock_mutex(struct mutex *mutex);

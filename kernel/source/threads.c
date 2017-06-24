@@ -53,9 +53,9 @@ struct context
 
 struct bind
 {
-    volatile u32_t *status;
+    volatile u32_t *location;
     u32_t mask;
-    u32_t complement;
+    u32_t value;
 };
 
 extern u32_t stack_section_end;
@@ -218,25 +218,15 @@ void yield_thread(condition_t condition, void *data)
     asm volatile ("svc #0\n" : : : "memory");
 }
 
-static u32_t status_condition(struct bind *bind)
+static u32_t bind_condition(struct bind *bind)
 {
-    return (*(bind->status) ^ bind->complement) & bind->mask;
+    return *(bind->location) & bind->mask == bind->value;
 }
 
-void wait_status(volatile u32_t *status, u32_t mask, u32_t complement)
+void wait_for(volatile u32_t *location, u32_t mask, u32_t value)
 {
-    struct bind bind = {status, mask, complement};
-    yield_thread((condition_t)status_condition, &bind);
-}
-
-static u32_t signal_condition(signal_t signal)
-{
-    return signal();
-}
-
-void wait_signal(signal_t signal)
-{
-    yield_thread((condition_t)signal_condition, signal);
+    struct bind bind = {location, mask, value};
+    yield_thread((condition_t)bind_condition, &bind);
 }
 
 static u32_t mutex_condition(struct mutex *mutex)
