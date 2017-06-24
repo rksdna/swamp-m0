@@ -220,7 +220,7 @@ void yield_thread(condition_t condition, void *data)
 
 static u32_t bind_condition(struct bind *bind)
 {
-    return *(bind->location) & bind->mask == bind->value;
+    return (*bind->location & bind->mask) == bind->value;
 }
 
 void wait_for(volatile u32_t *location, u32_t mask, u32_t value)
