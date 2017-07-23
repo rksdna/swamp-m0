@@ -344,4 +344,8 @@ struct gpio
 #define GPIO_PUPDR_PUPDR15_0 ((u32_t)0x40000000)
 #define GPIO_PUPDR_PUPDR15_1 ((u32_t)0x80000000)
 
+#define GPIO_PUPDR_NO(pin) ((u32_t)0x00000000 << (2 * (pin)))
+#define GPIO_PUPDR_PU(pin) ((u32_t)0x00000001 << (2 * (pin)))
+#define GPIO_PUPDR_PD(pin) ((u32_t)0x00000002 << (2 * (pin)))
+
 #endif
