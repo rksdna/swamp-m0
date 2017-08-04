@@ -28,14 +28,20 @@
 #define COPY(dst, src, type) *(type *)dst = *(const type *)src, dst += sizeof(type), src += sizeof(type)
 #define FILL(dst, src, type) *(type *)dst = src, dst += sizeof(type)
 
-static s32_t convert(char *buffer, u32_t base, u32_t sign, s32_t value)
+static s32_t convert(char *buffer, u32_t shift, u32_t base, u32_t sign, s32_t value)
 {
     static const char digits[] = "0123456789ABCDEF";
     char *ptr = buffer;
     u32_t remainder = sign && value < 0 ? -value : value;
-    do
+    u32_t position = 0;
+    while (remainder || position <= shift)
+    {
         *ptr++ = digits[remainder % base], remainder = remainder / base;
-    while (remainder);
+        if (position == shift - 1)
+            *ptr++ = '.';
+
+        position++;
+    }
 
     if (sign && value < 0)
         *ptr++ = '-';
@@ -43,11 +49,11 @@ static s32_t convert(char *buffer, u32_t base, u32_t sign, s32_t value)
     return ptr - buffer;
 }
 
-static void put_integer(struct stream *stream, u32_t size, u32_t base, u32_t sign, s32_t value)
+static void put_integer(struct stream *stream, u32_t size, u32_t shift, u32_t base, u32_t sign, s32_t value)
 {
     char buffer[12];
     const char pad = sign ? ' ' : '0';
-    const u32_t count = convert(buffer, base, sign, value);
+    const u32_t count = convert(buffer, shift, base, sign, value);
 
     if (size == 0)
         size = count;
@@ -88,7 +94,7 @@ static void put_memory(struct stream *stream, u32_t size, const u8_t *data)
         size = 1;
 
     while (size--)
-        put_integer(stream, 2, 16, 0, *data++);
+        put_integer(stream, 2, 0, 16, 0, *data++);
 }
 
 void explicit_print(struct stream *stream, const char *format, const void *args)
@@ -99,6 +105,7 @@ void explicit_print(struct stream *stream, const char *format, const void *args)
         if (token == '%')
         {
             u32_t size = 0;
+            u32_t shift = 0;
             while (*format)
             {
                 token = *format++;
@@ -114,6 +121,13 @@ void explicit_print(struct stream *stream, const char *format, const void *args)
                     continue;
                 }
 
+                if (token == '.')
+                {
+                    shift = size;
+                    size = 0;
+                    continue;
+                }
+
                 if (token == 'c')
                 {
                     put_char(stream, size, *(u32_t *)args);
@@ -123,21 +137,21 @@ void explicit_print(struct stream *stream, const char *format, const void *args)
 
                 if (token == 'x')
                 {
-                    put_integer(stream, size, 16, 0, *(u32_t *)args);
+                    put_integer(stream, size, shift, 16, 0, *(u32_t *)args);
                     args += sizeof(u32_t);
                     break;
                 }
 
                 if (token == 'd')
                 {
-                    put_integer(stream, size, 10, 1, *(s32_t *)args);
+                    put_integer(stream, size, shift, 10, 1, *(s32_t *)args);
                     args += sizeof(s32_t);
                     break;
                 }
 
                 if (token == 'u')
                 {
-                    put_integer(stream, size, 10, 0, *(u32_t *)args);
+                    put_integer(stream, size, shift, 10, 0, *(u32_t *)args);
                     args += sizeof(u32_t);
                     break;
                 }
