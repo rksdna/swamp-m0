@@ -53,8 +53,9 @@ SZ = $(PREFIX)size
 BS = swamp-boot
 RM = rm -f
 
-CFLAGS = -mcpu=cortex-m0 -mthumb -ffreestanding -nostdinc -nostdlib -nostartfiles -Wall -Os -g -MD $(INC) $(DEF)
-LFLAGS = -mcpu=cortex-m0 -mthumb -ffreestanding -nostdinc -nostdlib -nostartfiles -T $(SCRIPT) -Wl,-Map=$(MAP)
+FLAGS = -mcpu=cortex-m0 -mthumb -ffreestanding -nostdinc -nostdlib -nostartfiles
+CFLAGS = $(FLAGS) -Wall -Os -g -MD $(INC) $(DEF)
+LFLAGS = $(FLAGS) -T $(SCRIPT) -Wl,-Map=$(MAP)
 
 # Targets
 
